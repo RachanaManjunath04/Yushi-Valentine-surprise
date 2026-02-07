@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 You're So Loved! 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fef5f5 0%, #f8f0f8 25%, #f5f3f8 50%, #f0f5f8 75%, #f5f8f0 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Floating hearts animation */
+        .heart-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float-up 8s infinite ease-in;
+            opacity: 0;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 2px 30px rgba(200, 180, 200, 0.15);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(200, 180, 200, 0.2);
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #9b87a8;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        
+        nav a:hover {
+            background: linear-gradient(135deg, #d4a5d4, #b8a8c8);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(180, 160, 180, 0.3);
+        }
+        
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        h1, h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #8b7a99;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(180, 160, 180, 0.15);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            animation: fadeInDown 1.2s ease;
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+        }
+        
+        @keyframes fadeInDown {
+            0% { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Welcome Section */
+        #welcome {
+            background: linear-gradient(135deg, rgba(234, 226, 234, 0.3), rgba(226, 234, 240, 0.3));
+        }
+        
+        .welcome-content {
+            text-align: center;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(180, 160, 180, 0.2);
+            animation: fadeIn 1s ease-in;
+            border: 1px solid rgba(200, 180, 200, 0.2);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .welcome-content p {
+            font-size: 1.2rem;
+            color: #7a6b8a;
+            line-height: 1.9;
+            margin: 1.5rem 0;
+            font-weight: 400;
+        }
+        
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 2s infinite ease-in-out;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
+        
+        /* Trivia Game Section */
+        #trivia {
+            background: linear-gradient(135deg, rgba(240, 234, 240, 0.3), rgba(234, 240, 246, 0.3));
+        }
+        
+        .trivia-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(180, 160, 200, 0.2);
+            border: 1px solid rgba(200, 180, 200, 0.2);
+        }
+        
+        .trivia-question {
+            font-size: 1.35rem;
+            color: #8b7a99;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .trivia-options {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .trivia-option {
+            background: linear-gradient(135deg, #f5f0f5, #f0f5fa);
+            border: 2px solid rgba(200, 180, 200, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #7a6b8a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .trivia-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 25px rgba(180, 160, 180, 0.25);
+            border-color: #b8a8c8;
+        }
+        
+        .trivia-option.correct {
+            background: linear-gradient(135deg, #d5e8d4, #c8ddc7);
+            border-color: #a8c8a7;
+            animation: celebrate 0.6s ease;
+        }
+        
+        .trivia-option.wrong {
+            background: linear-gradient(135deg, #f5d8d8, #f0c8c8);
+            border-color: #d8b8b8;
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes celebrate {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.05) rotate(2deg); }
+            75% { transform: scale(1.05) rotate(-2deg); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+        
+        .score-display {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.4rem;
+            color: #8b7a99;
+            font-weight: 600;
+        }
+        
+        .next-btn {
+            background: linear-gradient(135deg, #c8b8d8, #b8a8c8);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 2rem;
+            display: none;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.4s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(180, 160, 180, 0.4);
+            background: linear-gradient(135deg, #b8a8c8, #a898b8);
+        }
+        
+        /* Photo Gallery */
+        #gallery {
+            background: linear-gradient(135deg, rgba(234, 240, 234, 0.3), rgba(240, 234, 246, 0.3));
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+        }
+        
+        .photo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(180, 160, 180, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid rgba(200, 180, 200, 0.15);
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(180, 160, 180, 0.3);
+        }
+        
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .photo-caption {
+            padding: 1.2rem;
+            text-align: center;
+            color: #8b7a99;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e8dfe8, #dfe8f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        
+        /* Modal for enlarged photo */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 20px;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Messages Section */
+        #messages {
+            background: linear-gradient(135deg, rgba(246, 240, 246, 0.3), rgba(240, 246, 246, 0.3));
+        }
+        
+        .messages-container {
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        .message-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.8rem;
+            border-radius: 18px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 30px rgba(180, 160, 180, 0.18);
+            border-left: 4px solid #b8a8c8;
+            animation: slideIn 0.6s ease;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(200, 180, 200, 0.15);
+        }
+        
+        .message-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 12px 40px rgba(180, 160, 180, 0.25);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .message-from {
+            font-size: 1.25rem;
+            color: #8b7a99;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+        }
+        
+        .message-text {
+            font-size: 1.05rem;
+            color: #6b5b7a;
+            line-height: 1.85;
+            font-weight: 400;
+        }
+        
+        /* Confetti effect */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #c8b8d8;
+            position: absolute;
+            animation: confetti-fall 3s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            nav { gap: 1rem; padding: 1rem; }
+            nav a { font-size: 0.9rem; padding: 0.5rem 1rem; }
+            .welcome-content { padding: 2rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        }
+        
+        /* Timeline Styles */
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #c8b8d8, #b8c8d8);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: flex-start;
+            padding: 2rem 0;
+            position: relative;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #c8b8d8, #b8c8d8);
+            border: 4px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px rgba(180, 160, 180, 0.5);
+            z-index: 10;
+        }
+        
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 45%;
+            box-shadow: 0 8px 30px rgba(180, 160, 180, 0.2);
+            border: 1px solid rgba(200, 180, 200, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(180, 160, 180, 0.3);
+        }
+        
+        .timeline-content h3 {
+            color: #8b7a99;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-date {
+            color: #b8a8c8;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .timeline-content p {
+            color: #6b5b7a;
+            line-height: 1.7;
+        }
+        
+        /* Wish Jar Styles */
+        .wish-jar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .jar {
+            width: 300px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 235, 245, 0.9));
+            border-radius: 20px 20px 40px 40px;
+            border: 3px solid #c8b8d8;
+            box-shadow: 0 15px 50px rgba(180, 160, 180, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .jar::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            width: 180px;
+            height: 40px;
+            background: linear-gradient(135deg, #d8c8e8, #c8b8d8);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(180, 160, 180, 0.3);
+        }
+        
+        .jar:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+        
+        .jar-content {
+            padding: 3rem 2rem;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .wish-note {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(180, 160, 180, 0.2);
+            color: #8b7a99;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            transform: rotate(-3deg);
+            border: 2px dashed #c8b8d8;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: rotate(-3deg) translateY(0); }
+            50% { transform: rotate(-3deg) translateY(-10px); }
+        }
+        
+        .reveal-wish-btn {
+            background: linear-gradient(135deg, #c8b8d8, #b8a8c8);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 25px rgba(180, 160, 180, 0.3);
+        }
+        
+        .reveal-wish-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(180, 160, 180, 0.5);
+        }
+        
+        /* Reasons Grid */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .reason-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(180, 160, 180, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 1px solid rgba(200, 180, 200, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200, 184, 216, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .reason-card:hover::before {
+            left: 100%;
+        }
+        
+        .reason-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 45px rgba(180, 160, 180, 0.35);
+        }
+        
+        .reason-number {
+            font-size: 2.5rem;
+            color: #c8b8d8;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .reason-text {
+            color: #7a6b8a;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+        
+        /* Hug Button Styles */
+        .hug-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .hug-button {
+            background: linear-gradient(135deg, #f5b8d8, #d8b8d8);
+            border: none;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(245, 184, 216, 0.4);
+            position: relative;
+        }
+        
+        .hug-button:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 50px rgba(245, 184, 216, 0.6);
+        }
+        
+        .hug-button:active {
+            transform: scale(0.95);
+        }
+        
+        .hug-emoji {
+            font-size: 4rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .hug-text {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hug-counter {
+            font-size: 1.3rem;
+            color: #8b7a99;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(180, 160, 180, 0.2);
+        }
+        
+        #hugCount {
+            color: #d8b8d8;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hug-animation {
+            position: fixed;
+            font-size: 3rem;
+            pointer-events: none;
+            animation: hugFloat 2s ease-out forwards;
+            z-index: 9999;
+        }
+        
+        @keyframes hugFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(1.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container" id="heartContainer"></div>
+    
+    <nav>
+        <a href="#welcome">💕 Home</a>
+        <a href="#trivia">🎮 Trivia</a>
+        <a href="#gallery">📸 Gallery</a>
+        <a href="#timeline">✨ Timeline</a>
+        <a href="#wishes">🌟 Wishes</a>
+        <a href="#reasons">💝 Reasons</a>
+        <a href="#messages">💌 Messages</a>
+        <a href="#hug">🤗 Hug</a>
+    </nav>
+    
+    <!-- Welcome Section -->
+    <section id="welcome">
+        <div class="welcome-content">
+            <h1>💖 Happy Valentine's Day! 💖</h1>
+            <p><span class="sparkle">✨</span> You are SO loved! <span class="sparkle">✨</span></p>
+            <p>We created this special website just for you because you're absolutely amazing and we couldn't let Valentine's Day pass without showing you how much you mean to us!</p>
+            <p>💝 Explore the sections below to play games, see adorable photos, and read messages from everyone who adores you! 💝</p>
+        </div>
+    </section>
+    
+    <!-- Trivia Game Section -->
+    <section id="trivia">
+        <h2>🎮 How Well Do You Know Yourself? 🎮</h2>
+        <div class="trivia-container">
+            <div id="triviaGame">
+                <div class="trivia-question" id="question"></div>
+                <div class="trivia-options" id="options"></div>
+                <button class="next-btn" id="nextBtn">Next Question →</button>
+                <div class="score-display" id="score">Score: 0/0</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Photo Gallery Section -->
+    <section id="gallery">
+        <h2>📸 Your Adorable Moments 📸</h2>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Photos will be added here -->
+        </div>
+    </section>
+    
+    <!-- Modal for enlarged photos -->
+    <div class="modal" id="photoModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+    
+    <!-- Messages Section -->
+    <section id="messages">
+        <h2>💌 Messages From Those Who Love You 💌</h2>
+        <div class="messages-container" id="messagesContainer">
+            <!-- Messages will be added here -->
+        </div>
+    </section>
+    
+    <!-- Memory Timeline Section -->
+    <section id="timeline" style="background: linear-gradient(135deg, rgba(240, 246, 240, 0.3), rgba(246, 240, 240, 0.3));">
+        <h2>✨ Your Beautiful Journey ✨</h2>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>First Memory</h3>
+                    <p class="timeline-date">📅 Year 20XX</p>
+                    <p>Remember that amazing day when... [Add your special memory here]</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Unforgettable Moment</h3>
+                    <p class="timeline-date">📅 Year 20XX</p>
+                    <p>The time we laughed until we cried... [Add your special memory here]</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Adventure Together</h3>
+                    <p class="timeline-date">📅 Year 20XX</p>
+                    <p>That incredible trip where... [Add your special memory here]</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Today & Forever</h3>
+                    <p class="timeline-date">📅 Right Now</p>
+                    <p>And the journey continues with infinite love! 💕</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Interactive Wish Jar -->
+    <section id="wishes" style="background: linear-gradient(135deg, rgba(246, 246, 240, 0.3), rgba(240, 240, 246, 0.3));">
+        <h2>🌟 Wishes For You 🌟</h2>
+        <div class="wish-jar-container">
+            <div class="jar">
+                <div class="jar-content" id="jarContent">
+                    <div class="wish-note">Click the jar to reveal wishes! ✨</div>
+                </div>
+            </div>
+            <button class="reveal-wish-btn" id="revealWish">Open a Wish</button>
+        </div>
+    </section>
+    
+    <!-- Reasons Why We Love You -->
+    <section id="reasons" style="background: linear-gradient(135deg, rgba(240, 240, 246, 0.3), rgba(246, 240, 240, 0.3));">
+        <h2>💝 Reasons Why You're Amazing 💝</h2>
+        <div class="reasons-grid" id="reasonsGrid">
+            <!-- Reasons will be added dynamically -->
+        </div>
+    </section>
+    
+    <!-- Virtual Hug Button -->
+    <section id="hug" style="background: linear-gradient(135deg, rgba(246, 240, 246, 0.3), rgba(240, 246, 246, 0.3)); padding: 4rem 2rem;">
+        <h2>🤗 Send a Virtual Hug 🤗</h2>
+        <div class="hug-container">
+            <p style="color: #8b7a99; font-size: 1.2rem; text-align: center; margin-bottom: 2rem;">
+                Feeling the love? Click the button to send a warm hug!
+            </p>
+            <button class="hug-button" id="hugButton">
+                <span class="hug-emoji">🫂</span>
+                <span class="hug-text">Give a Big Hug!</span>
+            </button>
+            <div class="hug-counter" id="hugCounter">Hugs sent today: <span id="hugCount">0</span></div>
+        </div>
+    </section>
+    
+    <script>
+        // Floating hearts animation
+        function createFloatingHeart() {
+            const heartContainer = document.getElementById('heartContainer');
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = ['💕', '💖', '💗', '💓', '💝'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heartContainer.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 10000);
+        }
+        
+        setInterval(createFloatingHeart, 800);
+        
+        // Confetti effect
+        function createConfetti() {
+            const colors = ['#c8b8d8', '#b8c8d8', '#d8c8b8', '#c8d8b8', '#d8b8c8'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+        
+        // Trivia Game Data (PLACEHOLDER - Replace with real questions)
+        const triviaQuestions = [
+            {
+                question: "What's your favorite color?",
+                options: ["Pink 💖", "Purple 💜", "Blue 💙", "Green 💚"],
+                correct: 0
+            },
+            {
+                question: "What's your favorite food?",
+                options: ["Pizza 🍕", "Pasta 🍝", "Sushi 🍣", "Ice Cream 🍦"],
+                correct: 3
+            },
+            {
+                question: "What's your dream vacation destination?",
+                options: ["Paris 🗼", "Tokyo 🗾", "Bali 🏝️", "New York 🗽"],
+                correct: 2
+            },
+            {
+                question: "What's your favorite movie genre?",
+                options: ["Romance 💕", "Comedy 😂", "Action 💥", "Drama 🎭"],
+                correct: 0
+            },
+            {
+                question: "What's your hidden talent?",
+                options: ["Singing 🎤", "Dancing 💃", "Cooking 👨‍🍳", "Drawing 🎨"],
+                correct: 1
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+        
+        function loadQuestion() {
+            answered = false;
+            const q = triviaQuestions[currentQuestion];
+            document.getElementById('question').innerHTML = `Question ${currentQuestion + 1}/${triviaQuestions.length}<br>${q.question}`;
+            
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            
+            q.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'trivia-option';
+                btn.textContent = option;
+                btn.onclick = () => checkAnswer(index, q.correct);
+                optionsDiv.appendChild(btn);
+            });
+            
+            document.getElementById('nextBtn').style.display = 'none';
+            updateScore();
+        }
+        
+        function checkAnswer(selected, correct) {
+            if (answered) return;
+            answered = true;
+            
+            const options = document.querySelectorAll('.trivia-option');
+            options[selected].classList.add(selected === correct ? 'correct' : 'wrong');
+            options[correct].classList.add('correct');
+            
+            if (selected === correct) {
+                score++;
+                createConfetti();
+            }
+            
+            updateScore();
+            
+            options.forEach(opt => opt.style.pointerEvents = 'none');
+            
+            if (currentQuestion < triviaQuestions.length - 1) {
+                document.getElementById('nextBtn').style.display = 'block';
+            } else {
+                setTimeout(() => {
+                    alert(`🎉 Game Over! Your score: ${score}/${triviaQuestions.length}\n\nYou're amazing no matter what! 💖`);
+                }, 1500);
+            }
+        }
+        
+        function updateScore() {
+            document.getElementById('score').textContent = `Score: ${score}/${triviaQuestions.length}`;
+        }
+        
+        document.getElementById('nextBtn').onclick = () => {
+            currentQuestion++;
+            loadQuestion();
+        };
+        
+        // Load first question
+        loadQuestion();
+        
+        // Photo Gallery (PLACEHOLDER - Replace with real photos)
+        const photos = [
+            { caption: "Smiling Beauty ✨", emoji: "😊" },
+            { caption: "Adventure Time 🌟", emoji: "🌈" },
+            { caption: "Celebration Mode 🎉", emoji: "🎊" },
+            { caption: "Cute Moment 💕", emoji: "🌸" },
+            { caption: "Best Day Ever 🌞", emoji: "☀️" },
+            { caption: "Pure Joy 💖", emoji: "🎀" }
+        ];
+        
+        const galleryGrid = document.getElementById('galleryGrid');
+        photos.forEach(photo => {
+            const card = document.createElement('div');
+            card.className = 'photo-card';
+            card.innerHTML = `
+                <div class="photo-placeholder">${photo.emoji}</div>
+                <div class="photo-caption">${photo.caption}</div>
+            `;
+            galleryGrid.appendChild(card);
+        });
+        
+        // Photo modal
+        const modal = document.getElementById('photoModal');
+        const modalImg = document.getElementById('modalImg');
+        const closeModal = document.getElementById('closeModal');
+        
+        document.querySelectorAll('.photo-card').forEach(card => {
+            card.onclick = function() {
+                // This would show enlarged photo in real implementation
+                alert('📸 Click to add your actual photos here! Replace the emoji placeholders with real images.');
+            };
+        });
+        
+        closeModal.onclick = () => modal.style.display = 'none';
+        modal.onclick = (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        };
+        
+        // Love Messages (PLACEHOLDER - Replace with real messages)
+        const messages = [
+            {
+                from: "Mom 💝",
+                text: "My dearest daughter, you bring so much joy and light into our lives. Your kindness, strength, and beautiful spirit inspire me every single day. I'm so proud of the amazing person you've become. Love you to the moon and back! 🌙✨"
+            },
+            {
+                from: "Dad 👨",
+                text: "To my little princess, no matter how old you get, you'll always be my baby girl. Your laughter is my favorite sound, and your happiness is my greatest wish. You make me proud every single day. I love you more than words can say! 💕"
+            },
+            {
+                from: "Brother 👦",
+                text: "Hey sis! You're not just my sister, you're my best friend. Thanks for always being there, for all the laughs, and for being such an awesome person. Even though I tease you, you're pretty cool! 😎 Love ya!"
+            },
+            {
+                from: "Best Friend 👯‍♀️",
+                text: "To my partner in crime! Life is so much better with you in it. Thank you for being the most amazing, supportive, and fun friend anyone could ask for. Here's to a million more memories together! Love you tons! 🥰"
+            },
+            {
+                from: "Grandma 👵",
+                text: "My sweet granddaughter, you are a blessing in our lives. Your smile lights up every room, and your heart is pure gold. I love you more than all the stars in the sky. ⭐💖"
+            }
+        ];
+        
+        const messagesContainer = document.getElementById('messagesContainer');
+        messages.forEach((msg, index) => {
+            const card = document.createElement('div');
+            card.className = 'message-card';
+            card.style.animationDelay = `${index * 0.2}s`;
+            card.innerHTML = `
+                <div class="message-from">From: ${msg.from}</div>
+                <div class="message-text">${msg.text}</div>
+            `;
+            messagesContainer.appendChild(card);
+        });
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // Wish Jar Functionality
+        const wishes = [
+            "May every day bring you new reasons to smile 😊",
+            "Wishing you adventures that fill your heart with joy 🌈",
+            "May you always know how deeply you are loved 💕",
+            "Here's to dreams coming true and wishes being granted ✨",
+            "May your days be filled with laughter and love 🌸",
+            "Wishing you endless happiness and beautiful memories 🌟",
+            "May you always feel cherished and appreciated 💖",
+            "Here's to your amazing journey ahead! 🦋",
+            "Wishing you all the magic life has to offer ⭐",
+            "May your heart always be as full as it makes ours 💝"
+        ];
+        
+        let wishIndex = 0;
+        
+        document.getElementById('revealWish').addEventListener('click', function() {
+            const jarContent = document.getElementById('jarContent');
+            const wish = wishes[wishIndex];
+            
+            jarContent.innerHTML = `<div class="wish-note" style="animation: float 3s ease-in-out infinite;">${wish}</div>`;
+            
+            wishIndex = (wishIndex + 1) % wishes.length;
+            
+            createConfetti();
+        });
+        
+        // Reasons Why We Love You
+        const reasons = [
+            { number: "01", text: "Your smile lights up every room you enter" },
+            { number: "02", text: "You have the kindest heart" },
+            { number: "03", text: "Your laughter is contagious" },
+            { number: "04", text: "You always know how to make people feel special" },
+            { number: "05", text: "Your strength inspires everyone around you" },
+            { number: "06", text: "You bring joy wherever you go" },
+            { number: "07", text: "Your creativity knows no bounds" },
+            { number: "08", text: "You're incredibly thoughtful" },
+            { number: "09", text: "Your positivity is infectious" },
+            { number: "10", text: "You make the world a better place" },
+            { number: "11", text: "Your compassion touches hearts" },
+            { number: "12", text: "You're uniquely wonderful in every way" }
+        ];
+        
+        const reasonsGrid = document.getElementById('reasonsGrid');
+        reasons.forEach((reason, index) => {
+            const card = document.createElement('div');
+            card.className = 'reason-card';
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.innerHTML = `
+                <div class="reason-number">${reason.number}</div>
+                <div class="reason-text">${reason.text}</div>
+            `;
+            reasonsGrid.appendChild(card);
+        });
+        
+        // Virtual Hug Functionality
+        let hugCount = 0;
+        const hugButton = document.getElementById('hugButton');
+        const hugCountDisplay = document.getElementById('hugCount');
+        
+        hugButton.addEventListener('click', function(e) {
+            hugCount++;
+            hugCountDisplay.textContent = hugCount;
+            
+            // Create floating hug animation
+            const hugEmojis = ['🤗', '💕', '🫂', '💖', '❤️'];
+            const randomEmoji = hugEmojis[Math.floor(Math.random() * hugEmojis.length)];
+            
+            const hugAnim = document.createElement('div');
+            hugAnim.className = 'hug-animation';
+            hugAnim.textContent = randomEmoji;
+            hugAnim.style.left = e.clientX + 'px';
+            hugAnim.style.top = e.clientY + 'px';
+            document.body.appendChild(hugAnim);
+            
+            setTimeout(() => hugAnim.remove(), 2000);
+            
+            // Mini confetti
+            createConfetti();
+        });
+        
+        // Initial confetti on load
+        window.addEventListener('load', createConfetti);
+    </script>
+</body>
+</html>
